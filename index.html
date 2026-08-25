@@ -237,6 +237,16 @@
     </div>
 
     <div class="field">
+      <label>Which of these gadgets do you have? <span class="req">*</span></label>
+      <select id="gadgets" required>
+        <option value="">Select one</option>
+        <option>PC</option>
+        <option>Smart Phone</option>
+        <option>Both</option>
+      </select>
+    </div>
+
+    <div class="field">
       <label>Availability <span class="req">*</span></label>
       <select id="availability" required>
         <option value="">Select one</option>
@@ -337,10 +347,11 @@ form.addEventListener('submit', async function(e){
   const email = document.getElementById('email').value.trim();
   const location = document.getElementById('location').value.trim();
   const status = document.getElementById('status').value;
+  const gadgets = document.getElementById('gadgets').value;
   const availability = document.getElementById('availability').value;
   const motivation = document.getElementById('motivation').value.trim();
 
-  if(!fullName || !phone || !email || !location || !status || !availability || !motivation){
+  if(!fullName || !phone || !email || !location || !status || !gadgets || !availability || !motivation){
     errorEl.style.display = 'block';
     return;
   }
@@ -373,7 +384,7 @@ form.addEventListener('submit', async function(e){
   const entry = {
     fullName, phone, email, location,
     age: document.getElementById('age').value.trim(),
-    status, availability, motivation,
+    status, gadgets, availability, motivation,
     experience: document.getElementById('experience').value.trim(),
     source: document.getElementById('source').value.trim(),
     cvData, cvFileName, cvMimeType,
@@ -429,6 +440,7 @@ form.addEventListener('submit', async function(e){
           applicant_location: location,
           applicant_age: entry.age,
           applicant_status: status,
+          applicant_gadgets: gadgets,
           applicant_availability: availability,
           applicant_motivation: motivation,
           applicant_experience: entry.experience,
