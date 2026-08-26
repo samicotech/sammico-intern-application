@@ -218,8 +218,8 @@
         <input type="text" id="location" placeholder="e.g. Lagos" required>
       </div>
       <div class="field">
-        <label>Age</label>
-        <input type="number" id="age" min="14" max="99" placeholder="e.g. 21">
+        <label>Age <span class="req">*</span></label>
+        <input type="number" id="age" min="14" max="99" placeholder="e.g. 21" required>
       </div>
     </div>
 
@@ -346,12 +346,13 @@ form.addEventListener('submit', async function(e){
   const phone = document.getElementById('phone').value.trim();
   const email = document.getElementById('email').value.trim();
   const location = document.getElementById('location').value.trim();
+  const age = document.getElementById('age').value.trim();
   const status = document.getElementById('status').value;
   const gadgets = document.getElementById('gadgets').value;
   const availability = document.getElementById('availability').value;
   const motivation = document.getElementById('motivation').value.trim();
 
-  if(!fullName || !phone || !email || !location || !status || !gadgets || !availability || !motivation){
+  if(!fullName || !phone || !email || !location || !age || !status || !gadgets || !availability || !motivation){
     errorEl.style.display = 'block';
     return;
   }
@@ -382,8 +383,7 @@ form.addEventListener('submit', async function(e){
   submitBtn.textContent = 'Submitting...';
 
   const entry = {
-    fullName, phone, email, location,
-    age: document.getElementById('age').value.trim(),
+    fullName, phone, email, location, age,
     status, gadgets, availability, motivation,
     experience: document.getElementById('experience').value.trim(),
     source: document.getElementById('source').value.trim(),
